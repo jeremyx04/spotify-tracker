@@ -9,9 +9,12 @@ export default function Layout({ children }){
                     <Link href='/'>
                         <li><a>Spotify Tracker</a></li>
                     </Link> 
-                    <Link href='/'> 
-                        <li><a>test2</a></li>
+                    <Link href='/recent'> 
+                        <li><a>Recently Played</a></li>
                     </Link> 
+                    <Link href='/track'>
+                        <li><a>Top Tracks</a></li>
+                    </Link>
                 </ul>
             </nav>
             <main> {children} </main>

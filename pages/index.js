@@ -1,23 +1,23 @@
 import styles from '../styles/Home.module.css'
-import {useSession, signIn, signOut} from 'next-auth/react';
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 export default function Index() {
   const { data: session,status } = useSession();
-  if(status === "authenticated"){
+  if(status === 'authenticated'){
     return (
       <>
         Signed in as {session?.token?.email}
         <br />
-        <button onClick={signOut}> Sign out</button>
+        <button onClick={() => signOut()}> Sign out</button>
       </>
     )
   }
-  if(status === "unauthenticated"){
+  if(status === 'unauthenticated'){
     return (
       <>
-        Not logged in.
+        Not logged in.    
         <br />
-        <button onClick={signIn}> Sign in </button>
+        <button onClick={() => signIn('spotify')}> Sign in </button>
       </>
     )
   }
