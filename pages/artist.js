@@ -1,7 +1,7 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
-import Recent from '../components/Recent';
+import Artist from '../components/Artist';
 
-export default function recent() {
+export default function artist() {
     const { data: session,status } = useSession();
 
     if(status=='unauthenticated'){
@@ -14,8 +14,8 @@ export default function recent() {
     if(status=='authenticated'){
         return(
             <div>
-                <h1 className='recent'> Recently Played </h1>
-                <Recent />
+                <h1 className='recent'> Top Artists </h1>
+                <Artist />
             </div>
         )   
     }

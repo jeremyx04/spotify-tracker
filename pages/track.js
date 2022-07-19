@@ -1,38 +1,23 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
-import { useState } from 'react';
-import Script from 'next/script';
+import Track from '../components/Track';
 
-export default function recent() {
+export default function track() {
     const { data: session,status } = useSession();
-    const [ list,setList ] = useState([]);
 
-    async function getRecent(){
-        const res = await fetch('/api/top_tracks');
-        const { items } = await res.json();
-        if(items!=undefined){
-            setList(items);
-        }
-        console.log('eunha');
-    }
-
-    if(list.length===0)
-        getRecent();
-
-    if(status=="authenticated"){
+    if(status=='unauthenticated'){
         return(
             <div>
-                <h1 className='recent'> Top Tracks </h1>
-                {list.map((items) => (
-                    <div>
-                        <li className='recentList'> {items.name} - {items.album.artists[0].name} - {items.album.name} </li>
-                    </div>
-                ))}
+              <button onClick={()=>signIn('spotify')}>sign in</button>
             </div>
         )
     }
-    if(status=="unauthenticated"){
+    if(status=='authenticated'){
         return(
-            <Script> {signIn('spotify')} </Script>
-        )
+            <div>
+                <h1 className='recent'> Top Tracks </h1>
+                <Track />
+            </div>
+        )   
     }
+ 
 }
