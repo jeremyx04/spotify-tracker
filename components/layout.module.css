@@ -1,16 +1,16 @@
 .navbar{
     cursor: pointer;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .navbar ul {
     list-style-type: none;
     overflow: hidden;
-    background-color: #D8E1E9;
+    background-color:#2e1a47;
     margin: 0px;
     width: 100%;
-    border-style: solid;
-    border-color: #D0D0D3;
-    border-width: 2px;
 }
 
 .navbar li {
@@ -19,7 +19,7 @@
 
 .navbar a {
     display: block;
-    color: #000000;
+    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;

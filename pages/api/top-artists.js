@@ -5,13 +5,15 @@ const handler = async(req, res) => {
     const {
         token: {accessToken},
     } = await getSession({req});
-    const response = await getTop(accessToken,'artists');
+    let time = req.query.time;
+    if(!time)
+        time = 'medium_term';
+    const response = await getTop(accessToken,'artists',time);
     const { items } = await response.json();
-    console.log(items[0]);
     const artists = items.slice(0, 50).map((artist) => ({
         name: artist.name,
         url: artist.external_urls.spotify,
-        image: artist.images[2].url,
+        image: (artist.images[2] ? artist.images[2].url : null),
     }));
     return res.status(200).json(artists);
 }

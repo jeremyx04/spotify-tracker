@@ -1,23 +1,25 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
 import Track from '../components/Track';
+import styles from '../styles/Home.module.css'
 
 export default function track() {
     const { data: session,status } = useSession();
-
-    if(status=='unauthenticated'){
+    if(status==='authenticated'){
         return(
             <div>
-              <button onClick={()=>signIn('spotify')}>sign in</button>
-            </div>
-        )
-    }
-    if(status=='authenticated'){
-        return(
-            <div>
-                <h1 className='recent'> Top Tracks </h1>
                 <Track />
             </div>
         )   
+    }
+    else{
+        return(
+            <div className={styles.main}>
+                <h1> Spotify Tracker</h1>
+                Sign in to see your spotify stats
+                <br/> <br/>
+                <button onClick={() => signIn('spotify')}> Sign in </button>
+            </div>
+        )
     }
  
 }

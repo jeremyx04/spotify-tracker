@@ -5,7 +5,10 @@ const handler = async(req, res) => {
     const {
         token: {accessToken},
     } = await getSession({req});
-    const response = await getTop(accessToken,'tracks');
+    let time = req.query.time;
+    if(!time)
+        time = 'medium_term';
+    const response = await getTop(accessToken,'tracks',time);
     const { items } = await response.json();
     const tracks = items.slice(0, 50).map((track) => ({
         title: track.name,
@@ -16,7 +19,6 @@ const handler = async(req, res) => {
         image: track.album.images[2].url,
         album: track.album.name,
       }));
-
     return res.status(200).json({tracks});
 }
 

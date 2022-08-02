@@ -10,6 +10,12 @@ export default function Recent(recent) {
         return null;
 
     return (
+        <>
+        <h1 className='recent'> 
+            Recently Played
+            <br />
+            <a className='subtext'> Your recently played tracks </a>
+        </h1>
         <div className={styles.list}>
             <ul>
                 {data.map((track) => (
@@ -18,11 +24,16 @@ export default function Recent(recent) {
                             <img src={track.image}/>
                             <span>{track.title}</span>
                             <span>{track.artist}</span>
-                            <span>{track.album}</span>
+                            <span>
+                            {track.played_at.hour}:{track.played_at.minute} {track.played_at.time}
+                            <br/>
+                            {track.played_at.year}-{track.played_at.month}-{track.played_at.day}
+                            </span> 
                         </li>
                     </div>
                 ))}
             </ul>
         </div>
+        </>
     )
 }
