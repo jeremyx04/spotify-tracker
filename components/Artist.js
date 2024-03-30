@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-export default function Artist(artist) {
+export default function Artist() {
     const router = useRouter();
     const fetcher = (url) => fetch(url).then((r) => r.json());
     let time_range = router.query.time;
@@ -52,7 +52,7 @@ export default function Artist(artist) {
                 {data.map((artist) => (
                     <div key = {artist.url}>
                         <li>
-                            <img src={artist.image}/>
+                            <img src={artist.image} alt=""/>
                             <Link href={artist.url}>
                                 <span>{artist.name}</span>
                             </Link>

@@ -7,16 +7,19 @@ export default function Layout({ children }){
             <nav className={styles.navbar}>
                 <ul>
                     <Link href='/'>
-                        <li><a class='hover-underline-animation'> Spotify Tracker </a></li>
+                        <li><a className='hover-underline-animation'> Spotify Tracker </a></li>
                     </Link> 
                     <Link href='/track'>
-                        <li><a class='hover-underline-animation'> Top Tracks </a></li>
+                        <li><a className='hover-underline-animation'> Top Tracks </a></li>
                     </Link>
                     <Link href='/artist'>
-                        <li><a class='hover-underline-animation'> Top Artists </a></li>
+                        <li><a className='hover-underline-animation'> Top Artists </a></li>
                     </Link>
                     <Link href='/recent'> 
-                        <li><a class='hover-underline-animation'> Recently Played </a></li>
+                        <li><a className='hover-underline-animation'> Recently Played </a></li>
+                    </Link> 
+                    <Link href='/recommend'> 
+                        <li><a className='hover-underline-animation'> Recommended Tracks </a></li>
                     </Link> 
                 </ul>
             </nav>

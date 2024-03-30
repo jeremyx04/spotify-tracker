@@ -1,19 +1,19 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
-import Artist from '../components/Artist';
+import Track from '../components/Track';
 import styles from '../styles/Home.module.css'
+import Recommend from '../components/Recommend';
 
-export default function ArtistPage() {
+export default function RecommendPage() {
     const { data: session,status } = useSession();
-
     if(status==='authenticated'){
         return(
             <div>
-                <Artist />
+                <Recommend/>
             </div>
         )   
     }
     else{
-        return( 
+        return(
             <div className={styles.main}>
                 <h1> Spotify Tracker</h1>
                 Sign in to see your spotify stats

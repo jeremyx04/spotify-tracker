@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import styles from './list.module.css';
 import Link from 'next/link';
 
-export default function Recent(recent) {
+export default function Recent() {
     const fetcher = (url) => fetch(url).then((r) => r.json());
     const { data, error } = useSWR('api/recently-played',fetcher);
 
@@ -21,7 +21,7 @@ export default function Recent(recent) {
                 {data.map((track) => (
                     <div key = {track.url}>
                         <li>
-                            <img src={track.image}/>
+                            <img src={track.image} alt=""/>
                             <span>{track.title}</span>
                             <span>{track.artist}</span>
                             <span>
